@@ -1,47 +1,51 @@
 document.addEventListener("DOMContentLoaded", () => {
     
-    // ==========================================
-    // 3. وظيفة تبديل الوضع (الليلي والنهاري) وحفظه
-    // ==========================================
+    // 1. نظام تبديل الوضع (الليلي والنهاري) وتخزينه
     const themeToggleBtn = document.getElementById("theme-toggle");
     const themeIcon = themeToggleBtn.querySelector("i");
     const currentTheme = localStorage.getItem("theme") || "dark";
 
-    // تطبيق الوضع المحفوظ عند التحميل
     if (currentTheme === "light") {
-        document.body.classList.remove("dark-mode");
-        document.body.classList.add("light-mode");
+        document.body.classList.replace("dark-mode", "light-mode");
         themeIcon.className = "fas fa-moon"; 
-    } else {
-        document.body.classList.remove("light-mode");
-        document.body.classList.add("dark-mode");
-        themeIcon.className = "fas fa-sun";
     }
 
-    // الاستماع لحدث الضغط على الزر
     themeToggleBtn.addEventListener("click", () => {
         if (document.body.classList.contains("dark-mode")) {
-            document.body.classList.remove("dark-mode");
-            document.body.classList.add("light-mode");
+            document.body.classList.replace("dark-mode", "light-mode");
             themeIcon.className = "fas fa-moon";
             localStorage.setItem("theme", "light");
         } else {
-            document.body.classList.remove("light-mode");
-            document.body.classList.add("dark-mode");
+            document.body.classList.replace("light-mode", "dark-mode");
             themeIcon.className = "fas fa-sun";
             localStorage.setItem("theme", "dark");
         }
     });
 
-    // ==========================================
-    // 3. أنيميشن العدادات التفاعلية عند نزول الصفحة (Scroll)
-    // ==========================================
-    const statsCards = document.querySelectorAll('.stat-card');
+    // 2. أنيميشن ظهور العناصر اللطيف عند نزول الصفحة (Scroll Reveal)
+    const revealElements = document.querySelectorAll('.scroll-reveal');
     
-    // دالة لتشغيل عداد الأرقام من 0 للرقم المطلوب
-    const startCounter = (counterElement, targetValue) => {
+    const revealOnScrollObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                // إذا كان العنصر يحتوي على عداد أرقام، نقوم بتشغيله
+                if (entry.target.classList.contains('stat-card')) {
+                    const counterSpan = entry.target.querySelector('.counter');
+                    const target = parseInt(entry.target.getAttribute('data-target'), 10);
+                    startCounter(counterSpan, target);
+                }
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15 });
+
+    revealElements.forEach(element => revealOnScrollObserver.observe(element));
+
+    // دالة تشغيل العدادات التصاعدية الرقمية
+    function startCounter(counterElement, targetValue) {
         let startValue = 0;
-        const duration = 2000; // مدة الأنميشن بالملي ثانية (ثانيتين)
+        const duration = 2000;
         const stepTime = Math.max(Math.floor(duration / targetValue), 15);
         
         const timer = setInterval(() => {
@@ -53,49 +57,25 @@ document.addEventListener("DOMContentLoaded", () => {
                 counterElement.innerText = startValue;
             }
         }, stepTime);
-    };
+    }
 
-    // استخدام Intersection Observer لمراقبة وصول المستخدم لقسم الإحصائيات
-    const statsObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const card = entry.target;
-                card.classList.add('appear'); // تفعيل أنيميشن الظهور من الأسفل بـ CSS
-                
-                const counterSpan = card.querySelector('.counter');
-                const target = parseInt(card.getAttribute('data-target'), 10);
-                
-                startCounter(counterSpan, target);
-                observer.unobserve(card); // إيقاف المراقبة بعد العمل لمرة واحدة
-            }
-        });
-    }, {
-        threshold: 0.2 // يبدأ العمل عند ظهور 20% من الكارت بالشاشة
-    });
+    // 3. فلترة وتصفية الكورسات في نفس الصفحة
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            document.querySelector('.filter-btn.active').classList.remove('active');
+            button.classList.add('active');
 
-    statsCards.forEach(card => statsObserver.observe(card));
+            const filterValue = button.getAttribute('data-filter');
+            const cards = document.querySelectorAll('.course-card');
 
-    // ==========================================
-    // تأثيرات تفاعلية إضافية للروابط المفعلة بالـ Navbar
-    // ==========================================
-    const sections = document.querySelectorAll('section');
-    const navLinks = document.querySelectorAll('.nav-links a');
-
-    window.addEventListener('scroll', () => {
-        let current = '';
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            if (pageYOffset >= (sectionTop - 200)) {
-                current = section.getAttribute('id');
-            }
-        });
-
-        navLinks.forEach(a => {
-            a.classList.remove('active');
-            if (a.getAttribute('href').includes(current)) {
-                a.classList.add('active');
-            }
+            cards.forEach(card => {
+                if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
         });
     });
 });
