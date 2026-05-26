@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إنشاء حساب جديد | كيمياء القمة</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .auth-wrapper { min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 40px 20px; }
+        .auth-card { width: 100%; max-width: 500px; padding: 40px 30px; text-align: center; }
+        .auth-card h2 { font-size: 28px; font-weight: 800; margin-bottom: 10px; }
+        .auth-card p { font-size: 14px; opacity: 0.7; margin-bottom: 25px; }
+        .input-group { position: relative; margin-bottom: 18px; text-align: right; }
+        .input-group label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 6px; padding-right: 5px; }
+        .input-field-wrapper { position: relative; }
+        .input-field-wrapper i { position: absolute; top: 50%; transform: translateY(-50%); right: 15px; color: var(--primary-neon); opacity: 0.7; }
+        .auth-input { width: 100%; padding: 12px 45px 12px 15px; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border); border-radius: 10px; color: var(--text-color); font-family: 'Cairo', sans-serif; font-size: 15px; transition: all 0.3s; }
+        body.light-mode .auth-input { background: rgba(0, 0, 0, 0.03); }
+        .auth-input:focus { outline: none; border-color: var(--primary-neon); box-shadow: 0 0 10px rgba(30, 144, 255, 0.2); }
+        .error-msg { color: #ff4d4d; font-size: 12px; margin-top: 5px; display: none; padding-right: 5px; }
+        .password-strength { height: 5px; width: 100%; background: rgba(255,255,255,0.1); margin-top: 8px; border-radius: 3px; overflow: hidden; display: none;}
+        .password-strength-bar { height: 100%; width: 0%; transition: all 0.3s; }
+        .terms-container { display: flex; align-items: flex-start; gap: 8px; text-align: right; font-size: 13px; margin: 20px 0; cursor: pointer; }
+        .terms-container input { marginTop: 4px; }
+        .terms-container a { color: var(--secondary-cyan); text-decoration: none; font-weight: bold; }
+        .auth-btn { width: 100%; border: none; cursor: pointer; margin-bottom: 20px; }
+        .social-auth { margin-top: 20px; border-top: 1px solid var(--glass-border); padding-top: 20px; }
+        .social-auth p { font-size: 13px; margin-bottom: 15px; }
+        .social-btn { width: 100%; background: #fff; color: #000; border: none; padding: 12px; border-radius: 10px; font-weight: 700; cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 10px; font-family: 'Cairo', sans-serif; font-size: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: transform 0.3s; }
+        .social-btn:hover { transform: translateY(-2px); }
+        .auth-switch { font-size: 14px; opacity: 0.8; margin-top: 20px;}
+        .auth-switch a { color: var(--primary-neon); text-decoration: none; font-weight: 700; }
+    </style>
+</head>
+<body class="dark-mode">
+    <div class="animated-bg"></div>
+
+    <div class="auth-wrapper">
+        <div class="auth-card glass-card">
+            <h2>إنشاء <span class="highlight">حساب جديد</span></h2>
+            <p>انضم إلينا اليوم وابدأ تجربة تعليمية استثنائية</p>
+
+            <form id="registerForm" novalidate>
+                <div class="input-group">
+                    <label>الاسم الكامل</label>
+                    <div class="input-field-wrapper">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="regName" class="auth-input" placeholder="الأسم ثلاثي أو رباعي" required>
+                    </div>
+                    <div class="error-msg" id="regNameError">يرجى إدخال الاسم الكامل (3 كلمات على الأقل).</div>
+                </div>
+
+                <div class="input-group">
+                    <label>البريد الإلكتروني</label>
+                    <div class="input-field-wrapper">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="regEmail" class="auth-input" placeholder="example@domain.com" required>
+                    </div>
+                    <div class="error-msg" id="regEmailError">يرجى إدخال بريد إلكتروني صالح.</div>
+                </div>
+
+                <div class="input-group">
+                    <label>كلمة المرور</label>
+                    <div class="input-field-wrapper">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="regPassword" class="auth-input" placeholder="••••••••" required>
+                    </div>
+                    <div class="password-strength" id="passwordStrengthID">
+                        <div class="password-strength-bar" id="strengthBar"></div>
+                    </div>
+                    <div class="error-msg" id="regPasswordError">يجب أن تتكون كلمة المرور من 8 خانات على الأقل وبها أرقام وحروف.</div>
+                </div>
+
+                <div class="input-group">
+                    <label>تأكيد كلمة المرور</label>
+                    <div class="input-field-wrapper">
+                        <i class="fas fa-check-double"></i>
+                        <input type="password" id="regConfirmPassword" class="auth-input" placeholder="••••••••" required>
+                    </div>
+                    <div class="error-msg" id="regConfirmPasswordError">كلمات المرور غير متطابقة.</div>
+                </div>
+
+                <label class="terms-container">
+                    <input type="checkbox" id="regTerms" required>
+                    <span>أوافق على <a href="#">شروط وأحكام الاستخدام</a> و <a href="#">سياسة الخصوصية</a> لمنصة كيمياء القمة.</span>
+                </label>
+                <div class="error-msg" id="regTermsError" style="text-align:right; margin-top:-15px; margin-bottom:15px;">يجب الموافقة على الشروط للمتابعة.</div>
+
+                <button type="submit" class="btn btn-primary auth-btn">إنشاء الحساب</button>
+            </form>
+
+            <div class="social-auth">
+                <p>أو سجل سريعاً عبر</p>
+                <button class="social-btn" onclick="alert('جاري الاتصال بـ Google...')">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google" width="18">
+                    التسجيل بواسطة حساب Google
+                </button>
+            </div>
+
+            <div class="auth-switch">
+                لديك حساب بالفعل؟ <a href="login.html">سجل دخولك</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="auth.js"></script>
+</body>
+</html>
