@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول | كيمياء القمة</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* تنسيقات مخصصة لصفحات الدخول والتسجيل لضمان التوسط في الشاشة */
+        .auth-wrapper {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .auth-card {
+            width: 100%;
+            max-width: 450px;
+            padding: 40px 30px;
+            text-align: center;
+        }
+        .auth-card h2 {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+        .auth-card p {
+            font-size: 14px;
+            opacity: 0.7;
+            margin-bottom: 30px;
+        }
+        .input-group {
+            position: relative;
+            margin-bottom: 20px;
+            text-align: right;
+        }
+        .input-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            padding-right: 5px;
+        }
+        .input-field-wrapper {
+            position: relative;
+        }
+        .input-field-wrapper i {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 15px;
+            color: var(--primary-neon);
+            opacity: 0.7;
+        }
+        .input-field-wrapper .toggle-password {
+            right: auto;
+            left: 15px;
+            cursor: pointer;
+        }
+        .auth-input {
+            width: 100%;
+            padding: 12px 45px 12px 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            color: var(--text-color);
+            font-family: 'Cairo', sans-serif;
+            font-size: 15px;
+            transition: all 0.3s;
+        }
+        body.light-mode .auth-input {
+            background: rgba(0, 0, 0, 0.03);
+        }
+        .auth-input:focus {
+            outline: none;
+            border-color: var(--primary-neon);
+            box-shadow: 0 0 10px rgba(30, 144, 255, 0.2);
+        }
+        .error-msg {
+            color: #ff4d4d;
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
+            padding-right: 5px;
+        }
+        .auth-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+            margin-bottom: 25px;
+        }
+        .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+        .forgot-pass {
+            color: var(--secondary-cyan);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .forgot-pass:hover {
+            color: var(--primary-neon);
+            text-decoration: underline;
+        }
+        .auth-btn {
+            width: 100%;
+            border: none;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        .auth-switch {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        .auth-switch a {
+            color: var(--primary-neon);
+            text-decoration: none;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body class="dark-mode">
+    <div class="animated-bg"></div>
+
+    <div class="auth-wrapper">
+        <div class="auth-card glass-card">
+            <h2>مرحباً بك <span class="highlight">مجدداً</span></h2>
+            <p>سجّل دخولك لمتابعة رحلتك التعليمية في الكيمياء</p>
+
+            <form id="loginForm" novalidate>
+                <div class="input-group">
+                    <label>البريد الإلكتروني أو اسم المستخدم</label>
+                    <div class="input-field-wrapper">
+                        <i class="fas fa-envelope"></i>
+                        <input type="text" id="loginUser" class="auth-input" placeholder="example@domain.com" required>
+                    </div>
+                    <div class="error-msg" id="loginUserError">يرجى إدخال بريد إلكتروني أو اسم مستخدم صحيح.</div>
+                </div>
+
+                <div class="input-group">
+                    <label>كلمة المرور</label>
+                    <div class="input-field-wrapper">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="loginPassword" class="auth-input" placeholder="••••••••" required>
+                        <i class="fas fa-eye toggle-password" onclick="togglePasswordVisibility('loginPassword', this)"></i>
+                    </div>
+                    <div class="error-msg" id="loginPasswordError">كلمة المرور لا يمكن أن تكون فارغة.</div>
+                </div>
+
+                <div class="auth-options">
+                    <label class="remember-me">
+                        <input type="checkbox" id="rememberMe">
+                        <span>تذكرني</span>
+                    </label>
+                    <a href="#" class="forgot-pass" id="forgotPasswordLink">نسيت كلمة المرور؟</a>
+                </div>
+
+                <button type="submit" class="btn btn-primary auth-btn">تسجيل الدخول</button>
+            </form>
+
+            <div class="auth-switch">
+                ليس لديك حساب؟ <a href="register.html">أنشئ حسابك الآن</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="forgotModal" class="modal" style="display:none;">
+        <div class="modal-content glass-card">
+            <span class="close-btn">&times;</span>
+            <h3>استعادة كلمة المرور</h3>
+            <p style="margin-bottom: 20px;">أدخل بريدك الإلكتروني المسجل وسنرسل لك خطوات استعادة الحساب.</p>
+            <div class="input-group">
+                <div class="input-field-wrapper">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="resetEmail" class="auth-input" placeholder="example@domain.com">
+                </div>
+                <div class="error-msg" id="resetEmailError">يرجى إدخال بريد إلكتروني صحيح.</div>
+            </div>
+            <button class="btn btn-primary" id="sendResetBtn" style="width:100%">إرسال رابط الاستعادة</button>
+        </div>
+    </div>
+
+    <script src="auth.js"></script>
+</body>
+</html>
