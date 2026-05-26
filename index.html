@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منصة الكيمياء التعليمية | للأستاذ القدير</title>
+    <title>منصة كيمياء القمة التعليمية | الأستاذ الرائد</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
@@ -18,91 +18,213 @@
             <ul class="nav-links">
                 <li><a href="#hero" class="active">الرئيسية</a></li>
                 <li><a href="#features">مميزاتنا</a></li>
+                <li><a href="#courses-section">الكورسات</a></li>
+                <li><a href="#auth-section">تسجيل الدخول / الاشتراك</a></li>
                 <li><a href="#stats">إحصائيات</a></li>
                 <li><a href="#testimonials">آراء الطلاب</a></li>
             </ul>
-            <button id="theme-toggle" class="theme-btn" aria-label="تبديل الوضع">
-                <i class="fas fa-sun"></i>
-            </button>
+            <div class="nav-actions">
+                <button id="theme-toggle" class="theme-btn" aria-label="تبديل الوضع البصري">
+                    <i class="fas fa-sun"></i>
+                </button>
+            </div>
         </div>
     </nav>
 
     <section id="hero" class="hero-section">
         <div class="hero-container">
-            <div class="hero-text glass-card">
-                <span class="badge">مستقبل مشرق في الكيمياء</span>
-                <h1>الأستاذ الرائد في الكيمياء</h1>
+            <div class="hero-text glass-card scroll-reveal">
+                <span class="badge">مستقبل مشرق في الكيمياء للثانوية العامة</span>
+                <h1>الأستاذ الرائد في <br><span class="highlight">علم الكيمياء</span></h1>
                 <p class="teacher-bio">
-                    خبرة أكاديمية ممتدة لأكثر من 15 عاماً في تدريس منهج الكيمياء للثانوية العامة. نعتمد على أحدث استراتيجيات التعلم التفاعلي وتبسيط المفاهيم المعقدة للوصول بطلابنا إلى الدرجة النهائية.
+                    خبرة أكاديمية ممتدة لأكثر من 15 عاماً في تدريس منهج الكيمياء للثانوية العامة. نعتمد على أحدث استراتيجيات التعلم التفاعلي وتبسيط المعادلات المعقدة للوصول بطلابنا إلى الدرجة النهائية بثقة واقتدار.
                 </p>
                 <div class="hero-buttons">
-                    <a href="#features" class="btn btn-primary">ابدأ رحلتك الآن</a>
-                    <a href="#testimonials" class="btn btn-secondary">ماذا قالوا عنا؟</a>
+                    <a href="#auth-section" class="btn btn-primary">ابدأ رحلتك الآن</a>
+                    <a href="#courses-section" class="btn btn-secondary">تصفح الكورسات</a>
                 </div>
             </div>
-            <div class="hero-image-container">
+            <div class="hero-image-container scroll-reveal">
                 <div class="image-glow"></div>
-                <img src="tet.jpg" alt="صورة المدرس" class="teacher-img" onerror="this.src='https://via.placeholder.com/400x500/0f172a/1e90ff?text=Teacher+Image'">
+                <img src="tet.jpg" alt="صورة الأستاذ" class="teacher-img floating-teacher" onerror="this.src='https://via.placeholder.com/400x500/0f172a/1e90ff?text=Teacher+Image'">
             </div>
         </div>
     </section>
 
     <section id="features" class="features-section">
-        <h2 class="section-title">لماذا تختار <span class="highlight">منصتنا؟</span></h2>
+        <h2 class="section-title scroll-reveal">لماذا تختار <span class="highlight">منصتنا؟</span></h2>
         <div class="features-grid">
-            <div class="feature-card glass-card">
+            <div class="feature-card glass-card scroll-reveal">
                 <div class="feature-icon"><i class="fas fa-star"></i></div>
                 <h3>تعلم بسهولة</h3>
-                <p>واجهة بسيطة وسريعة تمكن المستخدم من الوصول إلى المحتوى التعليمي والملخصات في ثوانٍ معدودة وبأقل مجهود.</p>
+                <p>واجهة بسيطة وسريعة تمكن المستخدم من الوصول إلى المحتوى التعليمي والملخصات في ثوانٍ معدودة وبأقل مجهود يذكر.</p>
             </div>
-            <div class="feature-card glass-card">
+            <div class="feature-card glass-card scroll-reveal">
                 <div class="feature-icon"><i class="fas fa-video"></i></div>
                 <h3>محاضرات بجودة عالية</h3>
-                <p>توفير فيديوهات تعليمية وتجارب معملية مصورة بلا تقطيع وبأعلى جودة صوت وصورة لتجربة تعايش حقيقية.</p>
+                <p>توفير فيديوهات تعليمية وتجارب معملية كيميائية مصورة بلا تقطيع وبأعلى جودة بث لتجربة استيعاب بصرية فائقة.</p>
             </div>
-            <div class="feature-card glass-card">
+            <div class="feature-card glass-card scroll-reveal">
                 <div class="feature-icon"><i class="fas fa-book-open"></i></div>
                 <h3>تنظيم احترافي</h3>
-                <p>تقسيم واضح ومنظم للمواد، الأبواب، والمحاضرات مع اختبارات دورية بعد كل درس لتسهيل عملية التصفح والمذاكرة.</p>
+                <p>تقسيم واضح ومنظم للأبواب والفصول مع اختبارات تقييمية ذكية تلي كل محاضرة لتسهيل التصفح والمذاكرة المستمرة.</p>
             </div>
+        </div>
+    </section>
+
+    <section id="courses-section" class="courses-section-wrapper">
+        <div class="page-header scroll-reveal">
+            <h2 class="section-title">المحاضرات <span class="highlight">والكورسات المتاحة</span></h2>
+            <p>اختر صفك الدراسي وابدأ في حصد الدرجات النهائية فوراً</p>
+        </div>
+
+        <div class="filter-container scroll-reveal">
+            <button class="filter-btn active" data-filter="all">كل الكورسات</button>
+            <button class="filter-btn" data-filter="sec1">الصف الأول الثانوي</button>
+            <button class="filter-btn" data-filter="sec2">الصف الثاني الثانوي</button>
+            <button class="filter-btn" data-filter="sec3">الصف الثالث الثانوي</button>
+        </div>
+
+        <div class="courses-grid" id="coursesGrid">
+            <div class="course-card glass-card scroll-reveal" data-category="sec3">
+                <div class="course-img-wrapper">
+                    <span class="course-tag">الصف الثالث</span>
+                    <img src="https://via.placeholder.com/400x250/0f172a/1e90ff?text=Chemistry+Sec3" class="course-img" alt="الكيمياء العضوية">
+                </div>
+                <div class="course-content">
+                    <h3>شرح الكيمياء العضوية بالكامل</h3>
+                    <p>الدورة الأهم لطلاب الثالث الثانوي؛ شرح مبسط من الصفر للتسمية، التفاعلات، والمعادلات مع خرائط ذهنية مبتكرة لحفظ المركبات.</p>
+                    <div class="course-footer">
+                        <span class="course-price">350 ج.م</span>
+                        <a href="courses.html" class="btn btn-primary course-action-btn">عرض التفاصيل</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="course-card glass-card scroll-reveal" data-category="sec1">
+                <div class="course-img-wrapper">
+                    <span class="course-tag">الصف الأول</span>
+                    <img src="https://via.placeholder.com/400x250/0f172a/1e90ff?text=Chemistry+Sec1" class="course-img" alt="الكيمياء الكمية">
+                </div>
+                <div class="course-content">
+                    <h3>الباب الثاني: الكيمياء الكمية والمول</h3>
+                    <p>وداعاً لعقدة مسائل المول والكتلة؛ حلول تكتيكية سريعة لجميع أنواع المسائل المتوقعة في الامتحانات بطرق غير تقليدية.</p>
+                    <div class="course-footer">
+                        <span class="course-price free">مجاني بالكامل</span>
+                        <a href="courses.html" class="btn btn-primary course-action-btn">اشترك الآن</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="auth-section" class="auth-section-wrapper">
+        <h2 class="section-title scroll-reveal">انضم إلى <span class="highlight">منظومة التفوق</span></h2>
+        <div class="auth-grid-container">
+            
+            <div class="auth-form-card glass-card scroll-reveal">
+                <h3><i class="fas fa-sign-in-alt"></i> تسجيل الدخول</h3>
+                <p>سجل دخولك لمتابعة حصصك واختباراتك</p>
+                <form id="loginForm" novalidate>
+                    <div class="input-group">
+                        <label>البريد الإلكتروني أو اسم المستخدم</label>
+                        <div class="input-field-wrapper">
+                            <i class="fas fa-user"></i>
+                            <input type="text" id="loginUser" class="auth-input" placeholder="example@domain.com" required>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label>كلمة المرور</label>
+                        <div class="input-field-wrapper">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="loginPassword" class="auth-input" placeholder="••••••••" required>
+                        </div>
+                    </div>
+                    <div class="auth-options">
+                        <label class="remember-me">
+                            <input type="checkbox" id="rememberMe">
+                            <span>تذكرني</span>
+                        </label>
+                        <a href="#" class="forgot-pass" id="forgotPasswordLink">نسيت كلمة المرور؟</a>
+                    </div>
+                    <button type="submit" class="btn btn-primary auth-btn">دخول الحساب</button>
+                </form>
+            </div>
+
+            <div class="auth-form-card glass-card scroll-reveal">
+                <h3><i class="fas fa-user-plus"></i> فتح حساب جديد</h3>
+                <p>قم بإنشاء حسابك التعليمي مجاناً في دقيقة</p>
+                <form id="registerForm" novalidate>
+                    <div class="input-group">
+                        <label>الاسم الكامل</label>
+                        <div class="input-field-wrapper">
+                            <i class="fas fa-id-card"></i>
+                            <input type="text" id="regName" class="auth-input" placeholder="الاسم ثلاثي أو رباعي" required>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label>البريد الإلكتروني</label>
+                        <div class="input-field-wrapper">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="regEmail" class="auth-input" placeholder="name@domain.com" required>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label>كلمة المرور</label>
+                        <div class="input-field-wrapper">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="regPassword" class="auth-input" placeholder="••••••••" required>
+                        </div>
+                        <div class="password-strength" id="passwordStrengthID">
+                            <div class="password-strength-bar" id="strengthBar"></div>
+                        </div>
+                    </div>
+                    <label class="terms-container">
+                        <input type="checkbox" id="regTerms" required>
+                        <span>أوافق على جميع شروط وأحكام المنصة المعتمدة.</span>
+                    </label>
+                    <button type="submit" class="btn btn-primary auth-btn" style="background: linear-gradient(135deg, var(--secondary-cyan), var(--primary-neon));">تأكيد التسجيل والاشتراك</button>
+                </form>
+            </div>
+
         </div>
     </section>
 
     <section id="stats" class="stats-section">
         <div class="stats-grid">
-            <div class="stat-card glass-card" data-target="500">
+            <div class="stat-card glass-card scroll-reveal" data-target="500">
                 <div class="stat-icon"><i class="fas fa-user-graduate"></i></div>
                 <h3 class="stat-number">+<span class="counter">0</span></h3>
                 <p>طالب متميز</p>
             </div>
-            <div class="stat-card glass-card" data-target="120">
+            <div class="stat-card glass-card scroll-reveal" data-target="120">
                 <div class="stat-icon"><i class="fas fa-film"></i></div>
                 <h3 class="stat-number">+<span class="counter">0</span></h3>
-                <p>فيديو تعليمي</p>
+                <p>فيديو تعليمي تفاعلي</p>
             </div>
-            <div class="stat-card glass-card" data-target="95">
+            <div class="stat-card glass-card scroll-reveal" data-target="95">
                 <div class="stat-icon"><i class="fas fa-smile-beam"></i></div>
                 <h3 class="stat-number"><span class="counter">0</span>%</h3>
-                <p>رضا الطلاب</p>
+                <p>نسبة رضا الطلاب</p>
             </div>
         </div>
     </section>
 
     <section id="testimonials" class="testimonials-section">
-        <h2 class="section-title">آراء <span class="highlight">صنّاع النجاح</span></h2>
+        <h2 class="section-title scroll-reveal">آراء <span class="highlight">صنّاع النجاح</span></h2>
         <div class="testimonials-container">
-            <div class="testimonial-card glass-card">
-                <p class="comment">"بفضل الله ثم شرح الأستاذ المتميز وتسهيله للمعادلات الكيميائية الصعبة، استطعت الحصول على الدرجة النهائية في الكيمياء!"</p>
+            <div class="testimonial-card glass-card scroll-reveal">
+                <p class="comment">"بفضل الله ثم شرح الأستاذ المتميز وتسهيله للمعادلات الكيميائية الصعبة، استطعت الحصول على الدرجة النهائية في الكيمياء والالتحاق بكلية أحلامي!"</p>
                 <div class="student-info">
                     <div class="student-avatar"><i class="fas fa-user"></i></div>
                     <div>
                         <h4>أحمد محمد</h4>
-                        <span>طالب بالطب البشري حالياً</span>
+                        <span>طالب بكلية الطب البشري حالياً</span>
                     </div>
                 </div>
             </div>
-            <div class="testimonial-card glass-card">
-                <p class="comment">"المنصة منظمة جداً والفيديوهات جودتها ممتازة. الاختبارات بعد كل محاضرة ساعدتني على تثبيت المعلومة أولاً بأول."</p>
+            <div class="testimonial-card glass-card scroll-reveal">
+                <p class="comment">"المنصة منظمة جداً والفيديوهات جودتها ممتازة. الاختبارات الدورية بعد كل محاضرة ساعدتني على تثبيت المعلومات وتدارك نقاط ضعفي أولاً بأول."</p>
                 <div class="student-info">
                     <div class="student-avatar"><i class="fas fa-user"></i></div>
                     <div>
@@ -115,7 +237,7 @@
     </section>
 
     <footer class="main-footer">
-        <p>جميع الحقوق محفوظة © 2026 | تم التطوير بكل حب وشغف</p>
+        <p>جميع الحقوق محفوظة © 2026 | منصة كيمياء القمة التعليمية</p>
     </footer>
 
     <script src="script.js"></script>
