@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المحاضرات والكورسات | كيمياء القمة</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .courses-wrapper { padding: 130px 20px 60px 20px; max-width: 1200px; margin: 0 auto; }
+        .page-header { text-align: center; margin-bottom: 40px; }
+        
+        /* شريط التصفية والفرز الفخم */
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+        .filter-btn {
+            padding: 10px 24px;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            color: var(--text-color);
+            cursor: pointer;
+            font-family: 'Cairo', sans-serif;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        body.light-mode .filter-btn { background: rgba(0, 0, 0, 0.03); }
+        .filter-btn.active, .filter-btn:hover {
+            background: linear-gradient(135deg, var(--primary-neon), var(--secondary-cyan));
+            color: #fff;
+            border-color: transparent;
+            box-shadow: 0 4px 15px rgba(30, 144, 255, 0.3);
+        }
+
+        /* شبكة عرض الكورسات المتجاوبة */
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+        }
+        .course-card {
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            height: 100%;
+        }
+        .course-img-wrapper {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            border-bottom: 1px solid var(--glass-border);
+        }
+        .course-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .course-card:hover .course-img {
+            transform: scale(1.08);
+        }
+        .course-tag {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--primary-neon);
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+        .course-content {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        .course-content h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .course-content p {
+            font-size: 14px;
+            opacity: 0.8;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        .course-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--glass-border);
+            padding-top: 15px;
+            margin-top: auto;
+        }
+        .course-price {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--secondary-cyan);
+        }
+        .course-price.free {
+            color: #00cc66;
+        }
+        .course-action-btn {
+            padding: 8px 18px;
+            font-size: 14px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body class="dark-mode">
+    <div class="animated-bg"></div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo"><i class="fas fa-flask logo-icon"></i> كيمياء<span class="highlight">القمة</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="#" class="active">الكورسات</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="courses-wrapper">
+        <div class="page-header">
+            <h2 class="section-title">المحاضرات <span class="highlight">والكورسات المتاحة</span></h2>
+            <p>اختر صفك الدراسي وابدأ في حصد الدرجات النهائية</p>
+        </div>
+
+        <div class="filter-container">
+            <button class="filter-btn active" data-filter="all">كل الكورسات</button>
+            <button class="filter-btn" data-filter="sec1">الصف الأول الثانوي</button>
+            <button class="filter-btn" data-filter="sec2">الصف الثاني الثانوي</button>
+            <button class="filter-btn" data-filter="sec3">الصف الثالث الثانوي</button>
+        </div>
+
+        <div class="courses-grid" id="coursesGrid">
+            
+            <div class="course-card glass-card" data-category="sec3">
+                <div class="course-img-wrapper">
+                    <span class="course-tag">الصف الثالث</span>
+                    <img src="https://via.placeholder.com/400x250/0f172a/1e90ff?text=Chemistry+Sec3" class="course-img" alt="الكيمياء العضوية">
+                </div>
+                <div class="course-content">
+                    <h3>شرح الكيمياء العضوية بالكامل</h3>
+                    <p>الدورة الأهم لطلاب الثالث الثانوي؛ شرح مبسط من الصفر للتسمية، التفاعلات، والمعادلات مع خرائط ذهنية مبتكرة لحفظ المركبات.</p>
+                    <div class="course-footer">
+                        <span class="course-price">350 ج.م</span>
+                        <a href="#" class="btn btn-primary course-action-btn" onclick="alert('جاري الانتقال لتفاصيل كورس العضوية')">عرض التفاصيل</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="course-card glass-card" data-category="sec1">
+                <div class="course-img-wrapper">
+                    <span class="course-tag">الصف الأول</span>
+                    <img src="https://via.placeholder.com/400x250/0f172a/1e90ff?text=Chemistry+Sec1" class="course-img" alt="الكيمياء الكمية">
+                </div>
+                <div class="course-content">
+                    <h3>الباب الثاني: الكيمياء الكمية والمول</h3>
+                    <p>وداعاً لعقدة مسائل المول والكتلة؛ حلول تكتيكية سريعة لجميع أنواع المسائل المتوقعة في الامتحانات بطرق غير تقليدية.</p>
+                    <div class="course-footer">
+                        <span class="course-price free">مجاني بالكامل</span>
+                        <a href="#" class="btn btn-primary course-action-btn" onclick="alert('تم تسجيلك في الكورس المجاني بنجاح!')">اشترك الآن</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="course-card glass-card" data-category="sec2">
+                <div class="course-img-wrapper">
+                    <span class="course-tag">الصف الثاني</span>
+                    <img src="https://via.placeholder.com/400x250/0f172a/1e90ff?text=Chemistry+Sec2" class="course-img" alt="بنية الذرة">
+                </div>
+                <div class="course-content">
+                    <h3>البنية الذرية والجدول الدوري</h3>
+                    <p>رحلة تاريخية ونظرية لفهم نشأة الذرة، مستويات الطاقة وأعداد الكم الأربعة، وتدرج الخواص في الجدول الدوري الحديث.</p>
+                    <div class="course-footer">
+                        <span class="course-price">200 ج.م</span>
+                        <a href="#" class="btn btn-primary course-action-btn">عرض التفاصيل</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="course-card glass-card" data-category="sec3">
+                <div class="course-img-wrapper">
+                    <span class="course-tag">الصف الثالث</span>
+                    <img src="https://via.placeholder.com/400x250/0f172a/1e90ff?text=Chemistry+Sec3+Part2" class="course-img" alt="الاتزان الكيميائي">
+                </div>
+                <div class="course-content">
+                    <h3>الباب الثالث: الاتزان الكيميائي</h3>
+                    <p>شرح تفصيلي لقوانين فعل الكتلة، قاعدة لوشاتيليه، والاتزان الأيوني مع تطبيقات عملية وأسئلة بنك المعرفة.</p>
+                    <div class="course-footer">
+                        <span class="course-price">250 ج.م</span>
+                        <a href="#" class="btn btn-primary course-action-btn">عرض التفاصيل</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        // سكربت التصفية الديناميكي لكروت الكورسات
+        document.querySelectorAll('.filter-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                // تغيير الزر النشط
+                document.querySelector('.filter-btn.active').classList.remove('active');
+                button.classList.add('active');
+
+                const filterValue = button.getAttribute('data-filter');
+                const cards = document.querySelectorAll('.course-card');
+
+                cards.forEach(card => {
+                    if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                        card.style.display = 'flex';
+                        // إضافة أنيميشن ظهور خفيف
+                        card.style.animation = 'fadeIn 0.4s ease forwards';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
