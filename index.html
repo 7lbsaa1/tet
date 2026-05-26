@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة الكيمياء التعليمية | للأستاذ القدير</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-mode">
+
+    <div class="animated-bg"></div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo"><i class="fas fa-flask logo-icon"></i> كيمياء<span class="highlight">القمة</span></a>
+            <ul class="nav-links">
+                <li><a href="#hero" class="active">الرئيسية</a></li>
+                <li><a href="#features">مميزاتنا</a></li>
+                <li><a href="#stats">إحصائيات</a></li>
+                <li><a href="#testimonials">آراء الطلاب</a></li>
+            </ul>
+            <button id="theme-toggle" class="theme-btn" aria-label="تبديل الوضع">
+                <i class="fas fa-sun"></i>
+            </button>
+        </div>
+    </nav>
+
+    <section id="hero" class="hero-section">
+        <div class="hero-container">
+            <div class="hero-text glass-card">
+                <span class="badge">مستقبل مشرق في الكيمياء</span>
+                <h1>الأستاذ الرائد في الكيمياء</h1>
+                <p class="teacher-bio">
+                    خبرة أكاديمية ممتدة لأكثر من 15 عاماً في تدريس منهج الكيمياء للثانوية العامة. نعتمد على أحدث استراتيجيات التعلم التفاعلي وتبسيط المفاهيم المعقدة للوصول بطلابنا إلى الدرجة النهائية.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#features" class="btn btn-primary">ابدأ رحلتك الآن</a>
+                    <a href="#testimonials" class="btn btn-secondary">ماذا قالوا عنا؟</a>
+                </div>
+            </div>
+            <div class="hero-image-container">
+                <div class="image-glow"></div>
+                <img src="tet.jpg" alt="صورة المدرس" class="teacher-img" onerror="this.src='https://via.placeholder.com/400x500/0f172a/1e90ff?text=Teacher+Image'">
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="features-section">
+        <h2 class="section-title">لماذا تختار <span class="highlight">منصتنا؟</span></h2>
+        <div class="features-grid">
+            <div class="feature-card glass-card">
+                <div class="feature-icon"><i class="fas fa-star"></i></div>
+                <h3>تعلم بسهولة</h3>
+                <p>واجهة بسيطة وسريعة تمكن المستخدم من الوصول إلى المحتوى التعليمي والملخصات في ثوانٍ معدودة وبأقل مجهود.</p>
+            </div>
+            <div class="feature-card glass-card">
+                <div class="feature-icon"><i class="fas fa-video"></i></div>
+                <h3>محاضرات بجودة عالية</h3>
+                <p>توفير فيديوهات تعليمية وتجارب معملية مصورة بلا تقطيع وبأعلى جودة صوت وصورة لتجربة تعايش حقيقية.</p>
+            </div>
+            <div class="feature-card glass-card">
+                <div class="feature-icon"><i class="fas fa-book-open"></i></div>
+                <h3>تنظيم احترافي</h3>
+                <p>تقسيم واضح ومنظم للمواد، الأبواب، والمحاضرات مع اختبارات دورية بعد كل درس لتسهيل عملية التصفح والمذاكرة.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="stats" class="stats-section">
+        <div class="stats-grid">
+            <div class="stat-card glass-card" data-target="500">
+                <div class="stat-icon"><i class="fas fa-user-graduate"></i></div>
+                <h3 class="stat-number">+<span class="counter">0</span></h3>
+                <p>طالب متميز</p>
+            </div>
+            <div class="stat-card glass-card" data-target="120">
+                <div class="stat-icon"><i class="fas fa-film"></i></div>
+                <h3 class="stat-number">+<span class="counter">0</span></h3>
+                <p>فيديو تعليمي</p>
+            </div>
+            <div class="stat-card glass-card" data-target="95">
+                <div class="stat-icon"><i class="fas fa-smile-beam"></i></div>
+                <h3 class="stat-number"><span class="counter">0</span>%</h3>
+                <p>رضا الطلاب</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="testimonials-section">
+        <h2 class="section-title">آراء <span class="highlight">صنّاع النجاح</span></h2>
+        <div class="testimonials-container">
+            <div class="testimonial-card glass-card">
+                <p class="comment">"بفضل الله ثم شرح الأستاذ المتميز وتسهيله للمعادلات الكيميائية الصعبة، استطعت الحصول على الدرجة النهائية في الكيمياء!"</p>
+                <div class="student-info">
+                    <div class="student-avatar"><i class="fas fa-user"></i></div>
+                    <div>
+                        <h4>أحمد محمد</h4>
+                        <span>طالب بالطب البشري حالياً</span>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card glass-card">
+                <p class="comment">"المنصة منظمة جداً والفيديوهات جودتها ممتازة. الاختبارات بعد كل محاضرة ساعدتني على تثبيت المعلومة أولاً بأول."</p>
+                <div class="student-info">
+                    <div class="student-avatar"><i class="fas fa-user"></i></div>
+                    <div>
+                        <h4>سارة علي</h4>
+                        <span>طالبة بكلية الصيدلة</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <p>جميع الحقوق محفوظة © 2026 | تم التطوير بكل حب وشغف</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
