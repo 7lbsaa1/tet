@@ -1,29 +1,33 @@
-/* --- إعدادات الألوان والمتغيرات --- */
+/* ==========================================================================
+   1. إعدادات الألوان والمتغيرات والنظام البصري المشترك
+   ========================================================================== */
 :root {
-    --primary-neon: #1e90ff;
-    --secondary-cyan: #00c6ff;
-    --dark-bg: #0f172a;
-    --light-bg: #f3f4f6;
-    --light-text: #e5e7eb;
-    --dark-text: #1f2937;
+    --primary-neon: #1e90ff;       /* الأزرق النيوني */
+    --secondary-cyan: #00c6ff;     /* السماوي */
+    --dark-bg: #0f172a;           /* الأسود الداكن */
+    --light-bg: #e5e7eb;          /* الرمادي الفاتح */
+    --light-text: #f3f4f6;
+    --dark-text: #111827;
     
-    /* متغيرات الـ Glassmorphism للوضع الداكن كأساس */
-    --glass-bg: rgba(15, 23, 42, 0.45);
+    /* متغيرات تأثير Glassmorphism الافتراضي للوضع الداكن */
+    --glass-bg: rgba(15, 23, 42, 0.55);
     --glass-border: rgba(255, 255, 255, 0.08);
     --text-color: var(--light-text);
-    --nav-bg: rgba(15, 23, 42, 0.7);
+    --nav-bg: rgba(15, 23, 42, 0.75);
     --transition-speed: 0.4s;
+    --input-bg: rgba(255, 255, 255, 0.05);
 }
 
-/* --- تنسيقات الوضع المضيء (Light Mode) --- */
+/* التنسيقات الخاصة بالوضع المضيء (Light Mode) */
 body.light-mode {
     --text-color: var(--dark-text);
-    --glass-bg: rgba(255, 255, 255, 0.65);
-    --glass-border: rgba(30, 144, 255, 0.15);
-    --nav-bg: rgba(243, 244, 246, 0.8);
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(30, 144, 255, 0.18);
+    --nav-bg: rgba(229, 231, 235, 0.85);
+    --input-bg: rgba(0, 0, 0, 0.04);
 }
 
-/* --- الإعدادات العامة للموقع --- */
+/* الإعدادات الأساسية لتهيئة العناصر */
 * {
     margin: 0;
     padding: 0;
@@ -43,30 +47,33 @@ body.light-mode {
     background-color: var(--light-bg);
 }
 
+/* النصوص الملونة بتأثير التدرج اللوني */
 .highlight {
     background: linear-gradient(135deg, var(--primary-neon), var(--secondary-cyan));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-/* --- 1 & 2. الخلفية الـ Gradient المتحركة الخفيفة --- */
+/* ==========================================================================
+   2. الخلفية الـ Gradient المتحركة خفيفة التأثير
+   ========================================================================== */
 .animated-bg {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(-45deg, #0f172a, #1e3a8a, #020617, #0f172a);
+    background: linear-gradient(-45deg, #0f172a, #1e293b, #020617, #0f172a);
     background-size: 400% 400%;
     z-index: -2;
-    animation: gradientAnimation 15s ease infinite;
-    opacity: 0.9;
+    animation: gradientAnimation 20s ease infinite;
+    opacity: 0.95;
 }
 
 body.light-mode .animated-bg {
-    background: linear-gradient(-45deg, #e5e7eb, #bfdbfe, #f3f4f6, #dbeafe);
+    background: linear-gradient(-45deg, #e5e7eb, #d1d5db, #f3f4f6, #e5e7eb);
     background-size: 400% 400%;
-    opacity: 0.6;
+    opacity: 0.7;
 }
 
 @keyframes gradientAnimation {
@@ -75,34 +82,38 @@ body.light-mode .animated-bg {
     100% { background-position: 0% 50%; }
 }
 
-/* --- 2. تأثير الـ Glassmorphism الفخم --- */
+/* ==========================================================================
+   3. تصميم الكروت الفاخر (Glassmorphism Effect)
+   ========================================================================== */
 .glass-card {
     background: var(--glass-bg);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border: 1px solid var(--glass-border);
     border-radius: 20px;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background var(--transition-speed);
+    box-shadow: 0 10px 32px 0 rgba(0, 0, 0, 0.25);
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease, background var(--transition-speed);
 }
 
 .glass-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 40px 0 rgba(30, 144, 255, 0.25);
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px 0 rgba(30, 144, 255, 0.3);
 }
 
-/* --- 4. شريط علوي شفاف مع تأثير Blur --- */
+/* ==========================================================================
+   4. شريط التنقل العلوي الشفاف (Navbar)
+   ========================================================================== */
 .navbar {
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
     background: var(--nav-bg);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
     border-bottom: 1px solid var(--glass-border);
     padding: 15px 0;
-    transition: all var(--transition-speed);
+    transition: background var(--transition-speed), border var(--transition-speed);
 }
 
 .nav-container {
@@ -126,20 +137,20 @@ body.light-mode .animated-bg {
 
 .logo-icon {
     color: var(--primary-neon);
-    animation: float 3s ease-in-out infinite;
+    animation: floatAnimation 3s ease-in-out infinite;
 }
 
 .nav-links {
     display: flex;
     list-style: none;
-    gap: 30px;
+    gap: 25px;
 }
 
 .nav-links a {
     text-decoration: none;
     color: var(--text-color);
     font-weight: 600;
-    font-size: 16px;
+    font-size: 15px;
     transition: color 0.3s;
     position: relative;
 }
@@ -147,49 +158,73 @@ body.light-mode .animated-bg {
 .nav-links a::after {
     content: '';
     position: absolute;
-    bottom: -5px;
+    bottom: -6px;
     left: 0;
     width: 0;
     height: 2px;
     background: var(--primary-neon);
-    transition: width 0.3s;
+    transition: width 0.3s ease;
 }
 
 .nav-links a:hover::after, .nav-links a.active::after {
     width: 100%;
 }
 
-.nav-links a:hover {
+.nav-links a:hover, .nav-links a.active {
     color: var(--primary-neon);
 }
 
-/* زر تبديل الوضع */
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.nav-login-btn {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 600;
+    font-size: 14px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: 1px solid var(--glass-border);
+    transition: all 0.3s;
+}
+
+.nav-login-btn:hover {
+    background: rgba(30, 144, 255, 0.1);
+    border-color: var(--primary-neon);
+}
+
+/* زر تبديل الثيم */
 .theme-btn {
     background: linear-gradient(135deg, var(--primary-neon), var(--secondary-cyan));
     border: none;
     color: #fff;
-    width: 40px;
-    height: 40px;
+    width: 38px;
+    height: 38px;
     border-radius: 50%;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 18px;
-    box-shadow: 0 4px 15px rgba(30, 144, 255, 0.4);
-    transition: transform 0.3s;
+    font-size: 16px;
+    box-shadow: 0 4px 15px rgba(30, 144, 255, 0.35);
+    transition: transform 0.3s ease;
 }
 
 .theme-btn:hover {
-    transform: scale(1.1) rotate(15deg);
+    transform: scale(1.1) rotate(20deg);
 }
 
-/* --- 1. القسم الرئيسي (Hero Section) ومعلومات المدرس --- */
+/* ==========================================================================
+   5. الصفحة الرئيسية ومعلومات المدرس (Hero Section)
+   ========================================================================== */
 .hero-section {
-    padding: 150px 20px 80px 20px;
+    padding: 140px 20px 60px 20px;
     max-width: 1200px;
     margin: 0 auto;
-    min-height: 100vh;
+    min-height: 90vh;
     display: flex;
     align-items: center;
 }
@@ -197,7 +232,7 @@ body.light-mode .animated-bg {
 .hero-container {
     display: grid;
     grid-template-columns: 1.2fr 0.8fr;
-    gap: 50px;
+    gap: 40px;
     align-items: center;
     width: 100%;
 }
@@ -207,42 +242,43 @@ body.light-mode .animated-bg {
 }
 
 .badge {
-    background: rgba(30, 144, 255, 0.15);
+    background: rgba(30, 144, 255, 0.12);
     color: var(--primary-neon);
-    padding: 6px 15px;
+    padding: 6px 16px;
     border-radius: 30px;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 700;
     display: inline-block;
-    margin-bottom: 20px;
-    border: 1px solid rgba(30, 144, 255, 0.3);
+    margin-bottom: 25px;
+    border: 1px solid rgba(30, 144, 255, 0.25);
 }
 
 .hero-text h1 {
-    font-size: 42px;
+    font-size: 40px;
     font-weight: 900;
     margin-bottom: 20px;
     line-height: 1.4;
 }
 
 .teacher-bio {
-    font-size: 18px;
+    font-size: 17px;
     line-height: 1.8;
-    margin-bottom: 30px;
+    margin-bottom: 35px;
     opacity: 0.9;
 }
 
 .hero-buttons {
     display: flex;
-    gap: 20px;
+    gap: 15px;
 }
 
+/* أزرار الإجراءات */
 .btn {
-    padding: 12px 30px;
+    padding: 12px 28px;
     border-radius: 12px;
     text-decoration: none;
     font-weight: 700;
-    font-size: 16px;
+    font-size: 15px;
     transition: all 0.3s ease;
     display: inline-block;
 }
@@ -250,18 +286,19 @@ body.light-mode .animated-bg {
 .btn-primary {
     background: linear-gradient(135deg, var(--primary-neon), var(--secondary-cyan));
     color: #fff;
-    box-shadow: 0 4px 20px rgba(30, 144, 255, 0.4);
+    box-shadow: 0 4px 20px rgba(30, 144, 255, 0.35);
+    border: none;
 }
 
 .btn-primary:hover {
     transform: translateY(-3px);
-    box-shadow: 0 6px 25px rgba(30, 144, 255, 0.6);
+    box-shadow: 0 6px 25px rgba(30, 144, 255, 0.5);
 }
 
 .btn-secondary {
     background: transparent;
     color: var(--text-color);
-    border: 2px solid var(--glass-border);
+    border: 1px solid var(--glass-border);
 }
 
 .btn-secondary:hover {
@@ -269,7 +306,7 @@ body.light-mode .animated-bg {
     border-color: var(--primary-neon);
 }
 
-/* صورة المدرس المؤثرة الفخمة */
+/* صورة المدرس والتأثير المتوهج */
 .hero-image-container {
     position: relative;
     display: flex;
@@ -279,83 +316,81 @@ body.light-mode .animated-bg {
 
 .teacher-img {
     width: 100%;
-    max-width: 360px;
+    max-width: 350px;
     height: auto;
     border-radius: 24px;
     object-fit: cover;
     z-index: 2;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .image-glow {
     position: absolute;
-    width: 110%;
-    height: 110%;
-    background: radial-gradient(circle, rgba(30,144,255,0.3) 0%, transparent 70%);
+    width: 115%;
+    height: 115%;
+    background: radial-gradient(circle, rgba(30, 144, 255, 0.25) 0%, transparent 65%);
     z-index: 1;
-    animation: pulse 4s ease-in-out infinite;
+    animation: pulseAnimation 4s ease-in-out infinite;
 }
 
-/* --- 6. قسم مميزات المنصة --- */
+/* ==========================================================================
+   6. الأقسام الفرعية (المميزات، الإحصائيات، الآراء)
+   ========================================================================== */
 .features-section, .stats-section, .testimonials-section {
-    padding: 80px 20px;
+    padding: 70px 20px;
     max-width: 1200px;
     margin: 0 auto;
 }
 
 .section-title {
     text-align: center;
-    font-size: 36px;
+    font-size: 34px;
     font-weight: 800;
     margin-bottom: 50px;
 }
 
 .features-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
 }
 
 .feature-card {
-    padding: 40px 30px;
+    padding: 40px 25px;
     text-align: center;
 }
 
 .feature-icon {
-    font-size: 35px;
+    font-size: 32px;
     color: var(--primary-neon);
     margin-bottom: 20px;
-    background: linear-gradient(135deg, var(--primary-neon), var(--secondary-cyan));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
 }
 
 .feature-card h3 {
-    font-size: 22px;
-    margin-bottom: 15px;
+    font-size: 20px;
+    margin-bottom: 12px;
     font-weight: 700;
 }
 
 .feature-card p {
-    font-size: 15px;
+    font-size: 14px;
     line-height: 1.7;
     opacity: 0.8;
 }
 
-/* --- 3. قسم الإحصائيات مع الـ Animation عند السكرول --- */
+/* الإحصائيات مع تأثير جافا سكريبت للظهور */
 .stats-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 30px;
 }
 
 .stat-card {
     padding: 40px;
     text-align: center;
-    /* إعداد الكارت مخفي بشكل أولي ليظهر مع الأنيميشن الخاص بالـ JS */
     opacity: 0;
-    transform: translateY(40px);
+    transform: translateY(35px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out, box-shadow 0.3s;
 }
 
@@ -365,28 +400,21 @@ body.light-mode .animated-bg {
 }
 
 .stat-icon {
-    font-size: 40px;
+    font-size: 38px;
     color: var(--secondary-cyan);
     margin-bottom: 15px;
 }
 
 .stat-number {
-    font-size: 48px;
+    font-size: 44px;
     font-weight: 900;
-    margin-bottom: 10px;
-    color: var(--text-color);
+    margin-bottom: 8px;
 }
 
-.stat-card p {
-    font-size: 18px;
-    font-weight: 600;
-    opacity: 0.8;
-}
-
-/* --- 6. قسم آراء الطلاب --- */
+/* آراء الطلاب */
 .testimonials-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
     gap: 30px;
 }
 
@@ -396,7 +424,7 @@ body.light-mode .animated-bg {
 
 .comment {
     font-style: italic;
-    font-size: 16px;
+    font-size: 15px;
     line-height: 1.8;
     margin-bottom: 25px;
     position: relative;
@@ -404,12 +432,12 @@ body.light-mode .animated-bg {
 
 .comment::before {
     content: "“";
-    font-size: 50px;
+    font-size: 60px;
     color: var(--primary-neon);
     position: absolute;
     top: -25px;
-    right: -15px;
-    opacity: 0.3;
+    right: -10px;
+    opacity: 0.25;
 }
 
 .student-info {
@@ -419,28 +447,46 @@ body.light-mode .animated-bg {
 }
 
 .student-avatar {
-    width: 50px;
-    height: 50px;
+    width: 46px;
+    height: 46px;
     border-radius: 50%;
-    background: rgba(30,144,255,0.2);
+    background: rgba(30, 144, 255, 0.15);
     display: flex;
     justify-content: center;
     align-items: center;
     color: var(--primary-neon);
-    font-size: 20px;
 }
 
 .student-info h4 {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 700;
 }
 
 .student-info span {
-    font-size: 13px;
+    font-size: 12px;
     opacity: 0.6;
 }
 
-/* التذييل */
+/* ==========================================================================
+   7. النوافذ المنبثقة والتحقق والأنيميشن التكميلي
+   ========================================================================== */
+.modal {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.65); backdrop-filter: blur(8px);
+    z-index: 2000; display: flex; justify-content: center; align-items: center;
+}
+
+.modal-content {
+    width: 90%; max-width: 400px; padding: 30px; text-align: center; position: relative;
+}
+
+.close-btn {
+    position: absolute; top: 15px; left: 20px; font-size: 24px; cursor: pointer;
+}
+
+.close-btn:hover { color: #ff4d4d; }
+
+/* فوتر الصفحة */
 .main-footer {
     text-align: center;
     padding: 30px;
@@ -450,31 +496,41 @@ body.light-mode .animated-bg {
     opacity: 0.7;
 }
 
-/* --- الأنيميشن والتأثيرات الحركية (4) --- */
-@keyframes float {
+/* تأثيرات الحركة (Keyframes) */
+@keyframes floatAnimation {
     0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
+    50% { transform: translateY(-6px); }
 }
 
-@keyframes pulse {
+@keyframes pulseAnimation {
     0%, 100% { transform: scale(1); opacity: 0.5; }
-    50% { transform: scale(1.05); opacity: 0.8; }
+    50% { transform: scale(1.04); opacity: 0.75; }
 }
 
-/* --- 4. ضمان استجابة التصميم للأجهزة المتنوعة (Responsive Design) --- */
+@keyframes fadeInCard {
+    from { opacity: 0; transform: scale(0.96) translateY(12px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* ==========================================================================
+   8. استجابة التصميم للشاشات المختلفة (Responsive Web Design)
+   ========================================================================== */
 @media (max-width: 968px) {
     .hero-container {
         grid-template-columns: 1fr;
         text-align: center;
     }
     .hero-image-container {
-        order: -1; /* ظهور صورة المدرس في الأعلى في الموبايل */
+        order: -1; /* رفع الصورة للأعلى في شاشات الجوال */
     }
     .hero-buttons {
         justify-content: center;
     }
+    .hero-text h1 {
+        font-size: 32px;
+    }
     .nav-links {
-        display: none; /* للتبسيط؛ يفضل بالعادة إضافة قائمة هامبرغر بجافاسكريبت */
+        display: none; /* إخفاء الروابط العادية للشاشات الصغيرة */
     }
     .testimonials-container {
         grid-template-columns: 1fr;
